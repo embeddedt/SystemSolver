@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>System Solver</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="jquery.ui.touch-punch.min.js"></script>
+        <script src="jquery.alterclass.js"></script>
+        <script src="dragscrollable.min.js"></script>
+        <script src="algebra-0.2.6.min.js"></script>
+        <script src="jquery.textfill.js"></script>
+        <script src="big-text.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css">
+
+        <!-- The loading of KaTeX is deferred to speed up page rendering -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js"></script>
+        <link rel="stylesheet" href="system.css">
+        <script src="system.js"></script>
+    </head>
+    <body>
+        
+        <div id="whole-screen">
+            <div id="header">System Solver</div>
+            <div id='screen-contents'>
+                <div id='game-instructions'>
+                    <div style='overflow: auto;' id='instructions-text'>
+                        The goal of the game is to find the value of an item based on the information
+                        you see on two (or three) shelves.
+                        <p>
+                        Here's an example where you would be asked to find the value
+                        of one car.
+                        <center>
+                            <div class="shelf-with-items">
+                                <img src="shelf.svg" class="shelf-img"/>
+                                <div class="shelf-contents-wrapper">
+                                    <div class="shelf-contents">
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                    </div>
+                                </div>
+                                <div class="shelf-text">
+                                    <span>32</span>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="shelf-with-items">
+                                <img src="shelf.svg" class="shelf-img"/>
+                                <div class="shelf-contents-wrapper">
+                                    <div class="shelf-contents">
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                        <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                        <img src="car.svg" class="shelf-contents-img"/>
+                                        <img src="car.svg" class="shelf-contents-img"/>
+                                    </div>
+                                </div>
+                                <div class="shelf-text">
+                                    <span>50</span>
+                                </div>
+                            </div>
+                        </center>
+                        <p>
+                        Start by noticing that there are four pumpkins on the top shelf.
+                        <p>
+                        This means that each pumpkin must have a value of <b>8</b>.
+                        <p>
+                        There are six pumpkins on the bottom shelf, which means that the combined value
+                        of these pumpkins is <b>48</b>.
+                        <p>
+                        Therefore, the remaining value on the bottom shelf is 2, and since there are two
+                        cars, each car must have a value of <b>1</b>.
+                        <p>
+                        Ready to get started? Choose a level below! Remember, there's no limit to the
+                        number of questions you can solve, so you can keep playing for as long as you
+                        want.
+                    </div>
+                    <br>
+                    <center>
+                        <h3>Choose a level:</h3>
+                        <button class='my-button level-button' data-num='1'>1</button>
+                        <button class='my-button level-button' data-num='2'>2</button>
+                        <button class='my-button level-button' data-num='3'>3</button>
+                    </center>
+                </div>
+
+
+
+
+
+
+
+
+                <div id="real-game">
+                    <div id="first-shelf" class="shelf-with-items">
+                        <img src="shelf.svg" class="shelf-img"/>
+                        <div class="shelf-contents-wrapper">
+                            <div class="shelf-contents">
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                            </div>
+                        </div>
+                        <div class="shelf-text">
+                            <span>32</span>
+                        </div>
+                    </div>
+                    <p>
+                    <div id="second-shelf" class="shelf-with-items">
+                        <img src="shelf.svg" class="shelf-img"/>
+                        <div class="shelf-contents-wrapper">
+                            <div class="shelf-contents">
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                            </div>
+                        </div>
+                        <div class="shelf-text">
+                            <span>32</span>
+                        </div>
+                    </div>
+                    <p>
+                    <div id="third-shelf" class="shelf-with-items">
+                        <img src="shelf.svg" class="shelf-img"/>
+                        <div class="shelf-contents-wrapper">
+                            <div class="shelf-contents">
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                                <img src="pumpkin.svg" class="shelf-contents-img"/>
+                            </div>
+                        </div>
+                        <div class="shelf-text">
+                            <span>32</span>
+                        </div>
+                    </div>
+                    <center>
+                        <p>
+                        <div>
+                            Find the value of 1 <span id="item-name">item</span>.
+                        </div>
+                        <br>
+                        <div>
+                            <input id="item-number" name="item-number"/>
+                            <button class="my-button" id="check-button">Check</button>
+                        </div>
+                        <p>
+                        <button style="font-size: 20px;" class="my-button" onclick="showGameInstructions();">
+                            New level
+                        </button>
+                        <p>
+                        <span id='error-msg'></span>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
